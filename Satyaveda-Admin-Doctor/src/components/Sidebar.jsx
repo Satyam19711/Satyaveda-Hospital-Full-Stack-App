@@ -47,6 +47,15 @@ const Sidebar = () => {
             />
             <p className="md:text-xl text-sm sm:block hidden">Doctor List</p>
           </NavLink>
+          <a
+            href="https://satyam1919-user-satyaveda-hospital-full-stack-app.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer hover:bg-orange-50"
+          >
+            <span className="text-lg md:text-xl">🏠</span>
+            <p className="md:text-xl text-sm sm:block hidden">Main App</p>
+          </a>
         </ul>
       )}
       {/* Doctor  */}
@@ -78,6 +87,16 @@ const Sidebar = () => {
             />
             <p className="md:text-xl text-sm sm:block hidden">Profile</p>
           </NavLink>
+
+          <a
+            href="https://satyam1919-user-satyaveda-hospital-full-stack-app.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer hover:bg-orange-50"
+          >
+            <span className="text-lg md:text-xl">🏠</span>
+            <p className="md:text-xl text-sm sm:block hidden">Main App</p>
+          </a>
         </ul>
       )}
     </div>

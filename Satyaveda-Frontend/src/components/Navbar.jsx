@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { assets } from "../assets/assets";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
@@ -10,11 +10,27 @@ const Navbar = () => {
   const { token, setToken, userData } = useContext(AppContext);
   const [openProfileMenu, setOpenProfileMenu] = useState(false);
 
+  const profileRef = useRef(null);
+
   const logout = () => {
     navigate("/");
     setToken(false);
     localStorage.removeItem("token");
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setOpenProfileMenu(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="flex items-center justify-between text-sm py-4 mb-5 border-b border-b-gray-400">
@@ -45,6 +61,7 @@ const Navbar = () => {
       <div className="flex items-center gap-4">
         {token && userData ? (
           <div
+            ref={profileRef}
             className="flex items-center gap-2 cursor-pointer group relative"
             onClick={() => setOpenProfileMenu(!openProfileMenu)}
           >
@@ -72,6 +89,15 @@ const Navbar = () => {
                 <p onClick={logout} className="hover:text-black cursor-pointer">
                   Logout
                 </p>
+
+                <a
+                  href="https://satyam1919-admin-doctor-satyaveda-hospital-full-stack-app.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-black text-[#ff9933] cursor-pointer"
+                >
+                  Doctor App
+                </a>
               </div>
             </div>
           </div>
