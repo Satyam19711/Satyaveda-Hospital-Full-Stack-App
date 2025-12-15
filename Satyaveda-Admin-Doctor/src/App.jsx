@@ -24,7 +24,7 @@ const App = () => {
       <div className="flex items-start">
         <Sidebar />
         <Routes>
-          {/* <Route
+          <Route
             path="/"
             element={
               aToken ? (
@@ -35,9 +35,9 @@ const App = () => {
                 <Navigate to="/login" />
               )
             }
-          /> */}
+          />
 
-          <Route path="/" element={<></>} />
+          {/* <Route path="/" element={<></>} /> */}
 
           <Route path="/admin-dashboard" element={<Dashboard />} />
           <Route path="/all-appointments" element={<AllAppointments />} />
