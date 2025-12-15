@@ -89,6 +89,11 @@ The platform supports **Patient, Doctor, and Admin** roles with secure authentic
 - View total patients
 - Update profile details (about, fees, address, availability)
 
+## 🔑 Demo Credentials
+### Doctor
+Email: drmeera.satyaveda@zohomail.in  
+Password: drmeera@12  
+
 ### 📸 Doctor Screenshots
 
 ![App Screenshot](https://github.com/Satyam19711/Satyaveda-Hospital-Full-Stack-App/blob/main/Satyaveda-Frontend/src/assets/log-a-d.JPG)
