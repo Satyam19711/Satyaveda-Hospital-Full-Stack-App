@@ -56,6 +56,7 @@ const Login = () => {
         <div className="w-full">
           <p>Email:</p>
           <input
+            placeholder="Doctor: drmeera.satyaveda@zohomail.in"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             className="border border-[#DADADA] rounded w-full p-2 mt-1 "
@@ -66,6 +67,7 @@ const Login = () => {
         <div className="w-full">
           <p>Password:</p>
           <input
+            placeholder="Doctor: drmeera@12"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             className="border border-[#DADADA] rounded w-full p-2 mt-1 "
