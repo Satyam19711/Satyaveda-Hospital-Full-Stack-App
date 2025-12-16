@@ -4,6 +4,8 @@ import { AdminContext } from "../../context/AdminContext";
 import { useEffect } from "react";
 import { AppContext } from "../../context/AppContext";
 import { assets } from "../../assets/assets";
+import GlobalLoader from "../../components/GlobalLoader";
+
 const AllAppointments = () => {
   const {
     aToken,
@@ -11,13 +13,21 @@ const AllAppointments = () => {
     setAppointments,
     getAllAppointments,
     cancelAppointment,
+    loading,
   } = useContext(AdminContext);
+
   const { calculateAge, slotDateFormate, currency } = useContext(AppContext);
+
   useEffect(() => {
     if (aToken) {
       getAllAppointments();
     }
   }, [aToken]);
+
+  if (loading) {
+    return <GlobalLoader />;
+  }
+
   return (
     <div className="w-full max-w-6xl m-5">
       <p className="mb-3 text-lg font-medium text-[#ff9933]">

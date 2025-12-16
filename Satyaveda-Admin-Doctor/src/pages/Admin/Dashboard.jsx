@@ -2,9 +2,10 @@ import React, { useContext, useEffect } from "react";
 import { AdminContext } from "../../context/AdminContext";
 import { assets } from "../../assets/assets";
 import { AppContext } from "../../context/AppContext";
+import GlobalLoader from "../../components/GlobalLoader";
 
 const Dashboard = () => {
-  const { getDashData, aToken, dashData, cancelAppointment } =
+  const { getDashData, aToken, dashData, cancelAppointment, loading } =
     useContext(AdminContext);
 
   const { slotDateFormate } = useContext(AppContext);
@@ -14,6 +15,10 @@ const Dashboard = () => {
       getDashData();
     }
   }, [aToken]);
+
+  if (!dashData || loading) {
+    return <GlobalLoader />;
+  }
   return (
     dashData && (
       <div className="m-5">

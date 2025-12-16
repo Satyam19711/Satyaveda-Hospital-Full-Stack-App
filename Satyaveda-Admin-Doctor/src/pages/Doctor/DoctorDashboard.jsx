@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { DoctorContext } from "../../context/DoctorContext";
 import { assets } from "../../assets/assets";
 import { AppContext } from "../../context/AppContext";
+import GlobalLoader from "../../components/GlobalLoader";
 
 const DoctorDashboard = () => {
   const {
@@ -11,6 +12,7 @@ const DoctorDashboard = () => {
     getDashData,
     completeAppointment,
     cancelAppointment,
+    loading,
   } = useContext(DoctorContext);
   const { currency, slotDateFormate } = useContext(AppContext);
 
@@ -19,6 +21,10 @@ const DoctorDashboard = () => {
       getDashData();
     }
   }, [dToken]);
+
+  if (loading) {
+    return <GlobalLoader />;
+  }
   return (
     dashData && (
       <div className="m-5">

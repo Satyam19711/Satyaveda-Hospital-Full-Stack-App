@@ -3,6 +3,7 @@ import { AdminContext } from "../context/AdminContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { DoctorContext } from "../context/DoctorContext";
+import ConnectionStatus from "../components/ConnectionStatus";
 
 const Login = () => {
   const [state, setState] = useState("Admin");
@@ -48,6 +49,7 @@ const Login = () => {
 
   return (
     <form onSubmit={onSubmitHandler} className="min-h-[80vh] flex items-center">
+      <ConnectionStatus backendUrl={backendUrl} />
       <div className="flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-96 border rounded-xl text-[#5E5E5E] text-sm shadow-lg">
         <p className="text-2xl font-semibold m-auto">
           <span className="text-[#FF9933]">{state}</span> Login

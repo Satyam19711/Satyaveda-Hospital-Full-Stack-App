@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { DoctorContext } from "../../context/DoctorContext";
 import { AppContext } from "../../context/AppContext";
 import { assets } from "../../assets/assets";
+import GlobalLoader from "../../components/GlobalLoader";
 
 const DoctorAppointments = () => {
   const {
@@ -11,6 +12,7 @@ const DoctorAppointments = () => {
     setAppointments,
     completeAppointment,
     cancelAppointment,
+    loading,
   } = useContext(DoctorContext);
 
   const { calculateAge, slotDateFormate, currency } = useContext(AppContext);
@@ -20,6 +22,10 @@ const DoctorAppointments = () => {
       getAppointments();
     }
   }, [dToken]);
+
+  if (loading) {
+    return <GlobalLoader />;
+  }
   return (
     <div className="w-full max-w-6xl m-5">
       <p className="mb-3 text-lg font-medium text-[#ff9933]">

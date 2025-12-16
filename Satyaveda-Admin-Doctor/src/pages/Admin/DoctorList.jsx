@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { AdminContext } from "../../context/AdminContext";
+import GlobalLoader from "../../components/GlobalLoader";
 
 const DoctorList = () => {
-  const { doctors, aToken, getAllDoctors, changeAvailability } =
+  const { doctors, aToken, getAllDoctors, changeAvailability, loading } =
     useContext(AdminContext);
 
   useEffect(() => {
@@ -10,6 +11,10 @@ const DoctorList = () => {
       getAllDoctors();
     }
   }, [aToken]);
+
+  if (loading) {
+    return <GlobalLoader />;
+  }
   return (
     <div className="m-5 max-h-[90vh] overflow-y-scroll">
       <h1 className="text-lg font-medium text-[#ff9933]">All Doctors</h1>

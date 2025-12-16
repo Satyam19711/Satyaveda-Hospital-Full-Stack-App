@@ -13,13 +13,17 @@ const AppContextProvider = (props) => {
     localStorage.getItem("token") ? localStorage.getItem("token") : false
   );
   const [userData, setUserData] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const currencySymbol = "₹";
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const getDoctorsData = async () => {
     try {
+      setLoading(true);
+
       const { data } = await axios.get(backendUrl + `/api/doctor/list`);
+
       if (data.success) {
         setDoctors(data.doctors);
       } else {
@@ -28,6 +32,8 @@ const AppContextProvider = (props) => {
     } catch (error) {
       console.log(error);
       toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -58,6 +64,7 @@ const AppContextProvider = (props) => {
     userData,
     setUserData,
     loadUserProfileData,
+    loading,
   };
 
   useEffect(() => {

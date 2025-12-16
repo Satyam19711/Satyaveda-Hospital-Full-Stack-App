@@ -7,10 +7,17 @@ import { assets } from "../../assets/assets";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import GlobalLoader from "../../components/GlobalLoader";
 
 const DoctorProfile = () => {
-  const { dToken, profileData, setProfileData, getProfileData, backendUrl } =
-    useContext(DoctorContext);
+  const {
+    dToken,
+    profileData,
+    setProfileData,
+    getProfileData,
+    backendUrl,
+    loading,
+  } = useContext(DoctorContext);
 
   const { currency } = useContext(AppContext);
 
@@ -48,6 +55,10 @@ const DoctorProfile = () => {
       getProfileData();
     }
   }, [dToken]);
+
+  if (loading) {
+    return <GlobalLoader />;
+  }
 
   return (
     profileData && (
